@@ -3,29 +3,11 @@ import auth from "../../middleWare/authentication.js";
 import * as User_Controller from './controller/user.js'
 import validation from "../../middleWare/validation.js";
 import * as validators from './user.validators.js'
-import userModel from "../../DB/model/user.model.js";
 
 const router = Router()
 
 
-router.get('/', async (req, res,) => {
 
-    try {
-        const users = await userModel.find()
-
-        if (users.length) {
-
-            res.status(200).json({ message: 'Done', users })
-        } else {
-            res.status(400).json({ message: " user not found" })
-        }
-
-
-    } catch (error) {
-        res.status(500).json({ message: 'catch error', error })
-    }
-
-})
 router.use(auth());
 
 
